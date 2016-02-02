@@ -1,0 +1,73 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Program1 {
+
+	// used to recursively increment through a method
+	int i = 0;
+	ArrayList<House> houses = new ArrayList<House>();
+
+	public void listCreater(String txt) {
+		File list = new File(txt);
+		Scanner scan = null;
+		try {
+			scan = new Scanner(list);
+		} catch (FileNotFoundException e) {
+		}
+		while (scan.hasNextInt()) {
+			houses.add(new House(scan.nextInt(), scan.nextInt(), scan.nextFloat(), scan.nextInt()));
+		}
+		scan.close();
+	}
+
+	public void listFilterer() {
+		ArrayList<Integer> removeIt = new ArrayList<Integer>();
+		for (int i = 0; i < houses.size(); i++) {
+			if (houses.get(i).price > 150000 || houses.get(i).distance > 30 || houses.get(i).size < 1200) {
+				removeIt.add(i);
+			}
+		}
+		for (int i = 0; i < removeIt.size(); i++) {
+			houses.remove(removeIt.get(i) - i);
+		}
+	}
+
+	public void listOrderer(ArrayList<House> houseList) {
+		ArrayList<House> newList = new ArrayList<House>();
+		newList.add(houseList.get(0));
+		i += 1;
+		switch (i) {
+		case 1:
+			for (int j = 1; j < houseList.size(); j++) {
+				for (int h = 0; h < newList.size(); h++) {
+					if (houseList.get(j).getPrice() < newList.get(i).getPrice()) {
+						newList.set(h, houseList.get(j));
+					}
+				}
+			}
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		default:
+		}
+		i -= 1;
+	}
+
+	public void printlist(String file) {
+		PrintWriter pw = null;
+		try {
+			pw = new PrintWriter(file);
+		} catch (FileNotFoundException e) {
+		}
+		for (int i = 0; i < houses.size(); i++) {
+			pw.println(houses.get(i).getCaseNumber() + " " + houses.get(i).getPrice() + " "
+					+ houses.get(i).getDistance() + " " + houses.get(i).getSize());
+		}
+		pw.close();
+	}
+}
