@@ -1,0 +1,30 @@
+
+public class House {
+	int caseNumber;
+	int price;
+	float distance;
+	int size;
+
+	public House(int caseNumber, int price, float distance, int size) {
+		this.caseNumber = caseNumber;
+		this.price = price;
+		this.distance = distance;
+		this.size = size;
+	}
+
+	public int getCaseNumber() {
+		return caseNumber;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public float getDistance() {
+		return distance;
+	}
+
+	public int getSize() {
+		return size;
+	}
+}
