@@ -1,0 +1,10 @@
+
+public class Driver {
+	public static void main(String[] args) {
+		Program1 program = new Program1();
+		program.listCreater(args[0]);
+		program.listFilterer();
+		program.listOrderer(program.houses);
+		program.printlist("Ordered House List.txt");
+	}
+}
